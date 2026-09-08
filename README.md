@@ -1,36 +1,69 @@
-# docker-portainer
+<h1 align="center">🐳 Docker Portainer</h1>
 
-## Installation
+<p align="center">
+  <em>Docker Compose deployment for Portainer, a lightweight Docker management UI</em>
+</p>
 
-### 1. Create Volume
+<p align="center">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Compose">
+</p>
 
-```shell
-docker volume create portainer_data
+<p align="center">
+  <a href="README.de.md">🇩🇪 Deutsche Version</a>
+</p>
+
+---
+
+## 📖 About
+
+A Docker Compose setup for Portainer, a powerful yet lightweight management interface for Docker containers, images, networks, and volumes.
+
+## 🛠️ Tech Stack
+
+| Technology | Version | Purpose |
+|---|---|---|
+| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) Docker | Latest | Container runtime |
+| ![Portainer](https://img.shields.io/badge/Portainer-13BEF9?style=flat-square&logo=portainer&logoColor=white) Portainer | Latest | Docker management UI |
+
+## ✨ Features
+
+- **Web-based interface** — Manage Docker without the command line
+- **Container control** — Start, stop, restart, and remove containers
+- **Image management** — Pull, build, and manage Docker images
+- **Network visualization** — View and manage Docker networks
+- **Volume management** — Inspect and manage persistent storage
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Installation
+
+```bash
+git clone https://github.com/cooolinho/docker-portainer.git
+cd docker-portainer
+docker compose up -d
 ```
 
-### 2. Run Portainer
+Access Portainer at `http://localhost:9000`.
 
-```shell
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.5
+## 📋 Usage
+
+```bash
+# Start Portainer
+docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Stop Portainer
+docker compose down
 ```
 
-### 3. Login
+## 📄 License
 
-> https://localhost:9443
-
-## New Environment (portainer-agent)
-
-### 1. Run portainer-agent on external Server
-
-```shell
-docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:2.18.4
-```
-
-### 2. create Environment
-> Name: docker-hostname
-
-> Environment address: hostname:9001
-
-# Links
-
-- https://docs.portainer.io/start/install/server/docker
+Released under the MIT License.
